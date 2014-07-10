@@ -3,12 +3,14 @@ class LThread extends Thread{
 		int wait;
 		String id;
 		int count;
+		Linha linha;
 
-	LThread(int w, String s){
+	LThread(int w, String s, Linha linha){
 		wait = w;
 		running = false;
 		id = s;
 		count = 0;
+		this.linha = linha;
 	}
 
 	void start(){
@@ -19,10 +21,11 @@ class LThread extends Thread{
 	}
 
 	void run(){
-		while(running && count < 10){
+		while(running){
 			println(id + ": " + count);
 			count++;
-		
+			println(linha.getVelocity());
+			linha.update();
 	 		try{
 	 			sleep((long)(wait));
 	 		}catch (Exception e){
@@ -31,6 +34,9 @@ class LThread extends Thread{
 	println("The thread is dead!");
 
 }
+	void draw(){
+		linha.draw();
+	}
 
 	void quit(){
 		println("Quiting");

@@ -1,12 +1,13 @@
-class Lines{
+class Linha{
   
   private float y, len;
   private boolean alive;
   private boolean blink;
   private float velocity;
   private float alpha;
+  private float aux;
   
-  Lines(float x, float y, int len, float velocity){
+  Linha(float x, float y, int len, float velocity){
     this.y = y;
     this.len = len;
     this.alive = true;
@@ -15,11 +16,10 @@ class Lines{
     this.alpha = 0;
   }
   
-  Lines(float x, float y, int len, float velocity, boolean blink){
+  Linha(float x, float y, int len, float velocity, boolean blink){
     this.y = y;
     this.len = len;
     this.alive = true;
-    this.blink = true;
     this.velocity = velocity;
     this.alpha = 0;
     this.blink = blink;
@@ -49,45 +49,35 @@ class Lines{
     return this.alive;
   }
   
-  public void update(float y){
-        this.y = y;
-      
-  }
-  
   public float  getVelocity(){
     return this.velocity;
   }
 
-  // private void drawH(){
+  public void updateY(float y){
+        this.y = y;
+      
+  }
 
-  // }
-
-  // private void drawV(){
-
-  // }
-
-    
-  private void draw(){
+  public void update(){
     float a;    
     if(this.alive){   
       if(this.blink){
-        a = blink(this.alpha);
+        this.aux = blink(this.alpha);
         println("chegou no A");
       }
     else{
-        a = 255;
+        this.aux = 255;
         println("cheogou no B");
     }
-    stroke(0, 0, 0, a);
+
+  }
+    
+  public void draw(){
+    stroke(0, 0, 0, this.aux);
     line(this.y, 0, this.y,len );
     println("alpha: " + a + " velocity: " + this.velocity);
+  
   }
-}
-
-
-
-
-
   
   private float blink(float alpha){
 
