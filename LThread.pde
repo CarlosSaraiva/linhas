@@ -34,7 +34,7 @@ class LThread extends Thread{
 	println("The thread is dead!");
 
 }
-	void draw(){
+	public void draw(){
 		linha.draw();
 	}
 

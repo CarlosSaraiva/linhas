@@ -59,23 +59,23 @@ class Linha{
   }
 
   public void update(){
-    float a;    
     if(this.alive){   
       if(this.blink){
         this.aux = blink(this.alpha);
         println("chegou no A");
       }
+    }
     else{
         this.aux = 255;
         println("cheogou no B");
     }
 
   }
-    
+   
   public void draw(){
     stroke(0, 0, 0, this.aux);
     line(this.y, 0, this.y,len );
-    println("alpha: " + a + " velocity: " + this.velocity);
+    println("alpha: " + this.aux + " velocity: " + this.velocity);
   
   }
   

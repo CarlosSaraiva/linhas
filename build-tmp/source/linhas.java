@@ -12,46 +12,48 @@ import java.io.InputStream;
 import java.io.OutputStream; 
 import java.io.IOException; 
 
-public class dis extends PApplet {
+public class linhas extends PApplet {
 
-Lines[] reta = new Lines[2];
-LThread thread1 = new LThread(1000,"linha1");
-LThread thread2 = new LThread(1500,"linha 2");
+Linha[] linha = new Linha[2];
+LThread thread1 = new LThread(100,"linha1", new Linha(height/2, width/2, width, 5, true));
+//LThread thread2 = new LThread(1500,"linha 2");
 
 public void setup(){
   size(400, 300);
   background(255);
   frameRate(60);
-  reta[0] = new Lines(height/2, width/2, width, 5, true);
-  reta[1] = new Lines(height/2, 100, width, 5, true);
+  //linha[0] = new Linha(height/2, width/2, width, 5, true);
+  linha[1] = new Linha(height/2, 100, width, 5, true);
 
   thread1.start();
-  thread2.start();
+  //thread2.start();
 
 }
 
 public void draw(){
-	background(255);
-	fill(0);
+  background(255);
+  fill(0);
 
   int a = thread1.getCount();
   text(a,10,50);
+  thread1.draw();
  
-  int b = thread2.getCount();
-  text(b,10,150);
-
+  // int b = thread2.getCount();
+  // text(b,10,150);
 }
 class LThread extends Thread{
 		boolean running;
 		int wait;
 		String id;
 		int count;
+		Linha linha;
 
-	LThread(int w, String s){
+	LThread(int w, String s, Linha linha){
 		wait = w;
 		running = false;
 		id = s;
 		count = 0;
+		this.linha = linha;
 	}
 
 	public void start(){
@@ -62,10 +64,11 @@ class LThread extends Thread{
 	}
 
 	public void run(){
-		while(running && count < 10){
+		while(running){
 			println(id + ": " + count);
 			count++;
-		
+			println(linha.getVelocity());
+			linha.update();
 	 		try{
 	 			sleep((long)(wait));
 	 		}catch (Exception e){
@@ -74,6 +77,9 @@ class LThread extends Thread{
 	println("The thread is dead!");
 
 }
+	public void draw(){
+		linha.draw();
+	}
 
 	public void quit(){
 		println("Quiting");
@@ -85,15 +91,16 @@ class LThread extends Thread{
 		return count;
 	}
 }
-class Lines{
+class Linha{
   
   private float y, len;
   private boolean alive;
   private boolean blink;
   private float velocity;
   private float alpha;
+  private float aux;
   
-  Lines(float x, float y, int len, float velocity){
+  Linha(float x, float y, int len, float velocity){
     this.y = y;
     this.len = len;
     this.alive = true;
@@ -102,11 +109,10 @@ class Lines{
     this.alpha = 0;
   }
   
-  Lines(float x, float y, int len, float velocity, boolean blink){
+  Linha(float x, float y, int len, float velocity, boolean blink){
     this.y = y;
     this.len = len;
     this.alive = true;
-    this.blink = true;
     this.velocity = velocity;
     this.alpha = 0;
     this.blink = blink;
@@ -136,45 +142,35 @@ class Lines{
     return this.alive;
   }
   
-  public void update(float y){
-        this.y = y;
-      
-  }
-  
   public float  getVelocity(){
     return this.velocity;
   }
 
-  // private void drawH(){
+  public void updateY(float y){
+        this.y = y;
+      
+  }
 
-  // }
-
-  // private void drawV(){
-
-  // }
-
-    
-  private void draw(){
-    float a;    
+  public void update(){
     if(this.alive){   
       if(this.blink){
-        a = blink(this.alpha);
+        this.aux = blink(this.alpha);
         println("chegou no A");
       }
+    }
     else{
-        a = 255;
+        this.aux = 255;
         println("cheogou no B");
     }
-    stroke(0, 0, 0, a);
-    line(this.y, 0, this.y,len );
-    println("alpha: " + a + " velocity: " + this.velocity);
+
   }
-}
-
-
-
-
-
+   
+  public void draw(){
+    stroke(0, 0, 0, this.aux);
+    line(this.y, 0, this.y,len );
+    println("alpha: " + this.aux + " velocity: " + this.velocity);
+  
+  }
   
   private float blink(float alpha){
 
@@ -186,7 +182,7 @@ class Lines{
   }  
 }
   static public void main(String[] passedArgs) {
-    String[] appletArgs = new String[] { "dis" };
+    String[] appletArgs = new String[] { "linhas" };
     if (passedArgs != null) {
       PApplet.main(concat(appletArgs, passedArgs));
     } else {
