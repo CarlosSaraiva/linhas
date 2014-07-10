@@ -25,7 +25,7 @@ class LThread extends Thread{
 			println(id + ": " + count);
 			count++;
 			println(linha.getVelocity());
-			linha.update();
+			this.linha.update();
 	 		try{
 	 			sleep((long)(wait));
 	 		}catch (Exception e){
@@ -35,7 +35,7 @@ class LThread extends Thread{
 
 }
 	public void draw(){
-		linha.draw();
+		this.linha.draw();		
 	}
 
 	void quit(){

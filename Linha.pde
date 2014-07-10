@@ -74,13 +74,12 @@ class Linha{
    
   public void draw(){
     stroke(0, 0, 0, this.aux);
-    line(this.y, 0, this.y,len );
-    println("alpha: " + this.aux + " velocity: " + this.velocity);
-  
+    line(this.y, 0, this.y,len);
+    println(this.y  + "" + len);
+    println("alpha: " + this.aux + " velocity: " + this.velocity);  
   }
   
   private float blink(float alpha){
-
     this.alpha += this.velocity;
     if(this.alpha > 255 || this.alpha < 0){    
       this.velocity = -this.velocity;       

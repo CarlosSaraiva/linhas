@@ -14,20 +14,18 @@ import java.io.IOException;
 
 public class linhas extends PApplet {
 
-Linha[] linha = new Linha[2];
-LThread thread1 = new LThread(100,"linha1", new Linha(height/2, width/2, width, 5, true));
-//LThread thread2 = new LThread(1500,"linha 2");
+Linha linha = new  Linha(300/2, 400/2, 400, 5, true);
+LThread thread1 = new LThread(100,"linha1", linha);
 
 public void setup(){
   size(400, 300);
   background(255);
   frameRate(60);
-  //linha[0] = new Linha(height/2, width/2, width, 5, true);
-  linha[1] = new Linha(height/2, 100, width, 5, true);
+  // //linha[0] = new Linha(height/2, width/2, width, 5, true);
+  // linha[1] = new Linha(height/2, 100, width, 5, true);
 
   thread1.start();
   //thread2.start();
-
 }
 
 public void draw(){
@@ -36,8 +34,7 @@ public void draw(){
 
   int a = thread1.getCount();
   text(a,10,50);
-  thread1.draw();
- 
+  linha.draw();
   // int b = thread2.getCount();
   // text(b,10,150);
 }
@@ -68,7 +65,7 @@ class LThread extends Thread{
 			println(id + ": " + count);
 			count++;
 			println(linha.getVelocity());
-			linha.update();
+			this.linha.update();
 	 		try{
 	 			sleep((long)(wait));
 	 		}catch (Exception e){
@@ -78,7 +75,7 @@ class LThread extends Thread{
 
 }
 	public void draw(){
-		linha.draw();
+		this.linha.draw();		
 	}
 
 	public void quit(){
@@ -167,13 +164,12 @@ class Linha{
    
   public void draw(){
     stroke(0, 0, 0, this.aux);
-    line(this.y, 0, this.y,len );
-    println("alpha: " + this.aux + " velocity: " + this.velocity);
-  
+    line(this.y, 0, this.y,len);
+    println(this.y  + "" + len);
+    println("alpha: " + this.aux + " velocity: " + this.velocity);  
   }
   
   private float blink(float alpha){
-
     this.alpha += this.velocity;
     if(this.alpha > 255 || this.alpha < 0){    
       this.velocity = -this.velocity;       
