@@ -1,5 +1,9 @@
+import beads.*;
+import java.util.Arrays; 
+
 Linha linha = new  Linha(300/2, 400/2, 400, 5, true);
 LThread thread1 = new LThread(100,"linha1", linha);
+AudioContext ac;
 
 void setup(){
   size(400, 300);
@@ -10,6 +14,31 @@ void setup(){
 
   thread1.start();
   //thread2.start();
+
+  //AUDIO
+  ac = new  AudioContext();
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  WavePlayer freqModulator = new WavePlayer(ac, 1000, Buffer.SINE);
+  Function function = new Function(freqModulator){
+  	public float calculate(){
+  		return x[0] * 500.0 + 700.0;
+  	}
+  };
+  WavePlayer wp = new WavePlayer(ac, function, Buffer.SINE);
+  Gain g = new Gain(ac, 1, 0.1);
+  g.addInput(wp);
+  ac.out.addInput(g);
+  ac.start();
+
 }
 
 void draw(){

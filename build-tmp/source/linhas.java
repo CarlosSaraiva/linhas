@@ -3,6 +3,9 @@ import processing.data.*;
 import processing.event.*; 
 import processing.opengl.*; 
 
+import beads.*; 
+import java.util.Arrays; 
+
 import java.util.HashMap; 
 import java.util.ArrayList; 
 import java.io.File; 
@@ -14,8 +17,12 @@ import java.io.IOException;
 
 public class linhas extends PApplet {
 
+
+ 
+
 Linha linha = new  Linha(300/2, 400/2, 400, 5, true);
 LThread thread1 = new LThread(100,"linha1", linha);
+AudioContext ac;
 
 public void setup(){
   size(400, 300);
@@ -26,6 +33,22 @@ public void setup(){
 
   thread1.start();
   //thread2.start();
+
+  //AUDIO
+  ac = new  AudioContext();
+  WavePlayer freqModulator = new WavePlayer(ac, 50, Buffer.SINE);
+  Function function = new Function(freqModulator){
+  	public float calculate(){
+  		return x[0] * 100.0f + 600.0f;
+  	}
+  };
+
+  WavePlayer wp = new WavePlayer(ac, function, Buffer.SINE);
+  Gain g = new Gain(ac, 1, 0.1f);
+  g.addInput(wp);
+  ac.out.addInput(g);
+  ac.start();
+
 }
 
 public void draw(){
@@ -38,6 +61,7 @@ public void draw(){
   // int b = thread2.getCount();
   // text(b,10,150);
 }
+
 class LThread extends Thread{
 		boolean running;
 		int wait;
