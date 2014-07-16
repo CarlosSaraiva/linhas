@@ -1,6 +1,6 @@
 class Linha{
   
-  private float y, len;
+  private float x, y, len;
   private boolean alive;
   private boolean blink;
   private float velocity;
@@ -8,6 +8,7 @@ class Linha{
   private float aux;
   
   Linha(float x, float y, int len, float velocity){
+    this.x = x;
     this.y = y;
     this.len = len;
     this.alive = true;
@@ -17,6 +18,7 @@ class Linha{
   }
   
   Linha(float x, float y, int len, float velocity, boolean blink){
+    this.x = x;
     this.y = y;
     this.len = len;
     this.alive = true;
@@ -62,19 +64,18 @@ class Linha{
     if(this.alive){   
       if(this.blink){
         this.aux = blink(this.alpha);
-        println("chegou no A");
       }
     }
     else{
         this.aux = 255;
-        println("cheogou no B");
     }
 
   }
    
   public void draw(){
     stroke(0, 0, 0, this.aux);
-    line(this.y, 0, this.y,len);
+    //line(this.y, 0, this.y,len);
+    line(this.x, 0, this.x, len);
     println(this.y  + "" + len);
     println("alpha: " + this.aux + " velocity: " + this.velocity);  
   }
