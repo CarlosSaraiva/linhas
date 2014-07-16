@@ -16,16 +16,7 @@ void setup(){
   //thread2.start();
 
   //AUDIO
-  ac = new  AudioContext();
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  ac = new  AudioContext(); 
   
   WavePlayer freqModulator = new WavePlayer(ac, 1000, Buffer.SINE);
   Function function = new Function(freqModulator){

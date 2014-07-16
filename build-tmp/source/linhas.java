@@ -35,14 +35,14 @@ public void setup(){
   //thread2.start();
 
   //AUDIO
-  ac = new  AudioContext();
-  WavePlayer freqModulator = new WavePlayer(ac, 50, Buffer.SINE);
+  ac = new  AudioContext(); 
+  
+  WavePlayer freqModulator = new WavePlayer(ac, 1000, Buffer.SINE);
   Function function = new Function(freqModulator){
   	public float calculate(){
-  		return x[0] * 100.0f + 600.0f;
+  		return x[0] * 500.0f + 700.0f;
   	}
   };
-
   WavePlayer wp = new WavePlayer(ac, function, Buffer.SINE);
   Gain g = new Gain(ac, 1, 0.1f);
   g.addInput(wp);
