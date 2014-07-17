@@ -5,18 +5,17 @@ class LThread extends Thread{
 		int count;
 		Linha linha;
 
-	LThread(int w, String s, Linha linha){
-		wait = w;
+	LThread(int wait, String id, Linha linha){
+		this.wait = wait;
 		running = false;
-		id = s;
+		this.id = id;
 		count = 0;
 		this.linha = linha;
 	}
 
 	void start(){
 		running = true;
-		println("Starting thread (will execute every " + wait + " milliseconds.");
-		println("Linha desenhando");
+		println("Iniciando thread (desenhando " + this.linha + " a cada: " + wait + " ms.");
 		super.start();		
 	}
 
@@ -24,7 +23,6 @@ class LThread extends Thread{
 		while(running){
 			println(id + ": " + count);
 			count++;
-			println(linha.getVelocity());
 			this.linha.update();
 	 		try{
 	 			sleep((long)(wait));

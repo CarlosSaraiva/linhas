@@ -20,32 +20,29 @@ public class linhas extends PApplet {
 
  
 
-Linha linha1 = new  Linha(300/2, 400/2, 400, 5, true);
-Linha linha2 = new  Linha(200, 300, 400, 5, true);
-LThread thread1 = new LThread(100,"linha1", linha1);
-LThread thread2 = new LThread(200,"linha1", linha2);
-
+LThread threads[] = new LThread[6];
+int time = (1); //int(random(10)); 
 
 public void setup(){
   size(400, 300);
   background(255);
-  frameRate(60);
- 
-  thread1.start();
-  thread2.start();
-
+  frameRate(60); 
+    
+  for(int i = 0; i < threads.length; i++){
+    threads[i] = new LThread(PApplet.parseInt(random(4)), "linha: " + i, new Linha(random(400), 0.f, height, 0.1f, true));
+    threads[i].start(); 
+  }
 }
 
 public void draw(){
   background(255);
   fill(0);
-
-  int a = thread1.getCount();
-  text(a,10,50);
-  thread1.draw();
-  int b = thread2.getCount();
-  text(b,10,150);
-  thread2.draw();
+  
+  for(int i = 0; i < threads.length;i++){
+   threads[i].draw(); 
+  }
+  //Desenhar apenas 4 threads. 
+  //Quando uma chegar a zero, iniciar outra
 }
 // iport beads,*;
 
@@ -138,7 +135,7 @@ class LThread extends Thread{
 }
 class Linha{
   
-  private float y, len;
+  private float x, y, len;
   private boolean alive;
   private boolean blink;
   private float velocity;
@@ -146,6 +143,7 @@ class Linha{
   private float aux;
   
   Linha(float x, float y, int len, float velocity){
+    this.x = x;
     this.y = y;
     this.len = len;
     this.alive = true;
@@ -155,6 +153,7 @@ class Linha{
   }
   
   Linha(float x, float y, int len, float velocity, boolean blink){
+    this.x = x;
     this.y = y;
     this.len = len;
     this.alive = true;
@@ -200,19 +199,18 @@ class Linha{
     if(this.alive){   
       if(this.blink){
         this.aux = blink(this.alpha);
-        println("chegou no A");
       }
     }
     else{
         this.aux = 255;
-        println("cheogou no B");
     }
 
   }
    
   public void draw(){
     stroke(0, 0, 0, this.aux);
-    line(this.y, 0, this.y,len);
+    //line(this.y, 0, this.y,len);
+    line(this.x, 0, this.x, len);
     println(this.y  + "" + len);
     println("alpha: " + this.aux + " velocity: " + this.velocity);  
   }

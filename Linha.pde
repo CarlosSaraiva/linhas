@@ -74,10 +74,7 @@ class Linha{
    
   public void draw(){
     stroke(0, 0, 0, this.aux);
-    //line(this.y, 0, this.y,len);
     line(this.x, 0, this.x, len);
-    println(this.y  + "" + len);
-    println("alpha: " + this.aux + " velocity: " + this.velocity);  
   }
   
   private float blink(float alpha){
