@@ -1,3 +1,3 @@
-public interface IUpdate{
-	public void update();
-}
+// public interface IUpdate{
+// 	public void update();
+// }

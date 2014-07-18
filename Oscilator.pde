@@ -1,20 +1,27 @@
 class Oscilator{
 
 	private float frequency;
-	private WavePlayer wavePlayer;
-	private Glide frequencyGlide;
+	private WavePlayer tone;
+	private Glide frequencyGlide, gainGlide, modulatorGlide;
 	private Gain gain;
 	private String wave;
+	private AudioContext ac;
 
 
-	Audio(WavePlayer tone, float frequency, AudioContext ac, String wave){
+	Oscilator(AudioContext ac, float frequency){
 
-		WavePlayer wp = new WavePlayer(ac, function, Buffer.SINE);
-  		Gain g = new Gain(ac, 1, 0.1);
-  		g.addInput(wp);
-  		ac.out.addInput(g);
-		ac.start();
+		this.ac = ac;
+		this.frequencyGlide = new Glide(ac, 20, 50);
+		this.gainGlide = new Glide(ac, 10., 50);
+		this.modulatorGlide = new Glide(ac, 0.0, 50);
+		
+		WavePlayer tone = new WavePlayer(ac, this.frequencyGlide, Buffer.SINE);  		
+  		gain = new Gain(ac, 1, 1);
+  		gain.addInput(tone);
+  		ac.out.addInput(gain);
 	}
+
+	
 
 }	
 

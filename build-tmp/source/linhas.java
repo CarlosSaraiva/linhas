@@ -20,17 +20,27 @@ public class linhas extends PApplet {
 
  
 
-LThread threads[] = new LThread[6];
-int time = (1); //int(random(10)); 
+LThread threads[] = new LThread[12];
+int velocity = 1; //int(random(10));
+int wait = 10;
+int position = 50;
+AudioContext ac;
 
 public void setup(){
-  size(400, 300);
+  size(650, 300);
   background(255);
   frameRate(60); 
+
+  ac = new AudioContext();
+
+  Oscilator osc = new Oscilator(ac, 440.f);
+  ac.start();
+
     
   for(int i = 0; i < threads.length; i++){
-    threads[i] = new LThread(PApplet.parseInt(random(4)), "linha: " + i, new Linha(random(400), 0.f, height, 0.1f, true));
+    threads[i] = new LThread(PApplet.parseInt(random(100)), "linha: " + i, new Linha(position, 0.f, height, 1, true));
     threads[i].start(); 
+    position += 50;
   }
 }
 
@@ -38,51 +48,19 @@ public void draw(){
   background(255);
   fill(0);
   
-  for(int i = 0; i < threads.length;i++){
+  for(int i = 0; i < threads.length; i++){
    threads[i].draw(); 
   }
-  //Desenhar apenas 4 threads. 
-  //Quando uma chegar a zero, iniciar outra
 }
-// iport beads,*;
-
-// class Audio{
-
-//   float baseFrequency = 200.0f;
-//   int sineCount = 10;
-
-//   WavePlayer sineTone;
-//   Glide frequency;
-//   Gain gain;
-
-
-//   Audio(WavePlayer tone, float frequency){
-
-
-
-//   }
-
-
-
+public interface IDraw{
+	public void draw();
+}
+public interface IUpdate{
+	public void update();
+}
+// public interface IUpdate{
+// 	public void update();
 // }
-
-//   AudioContext ac;
-
-//   WavePlayer freqModulator = new WavePlayer(ac, 1000, Buffer.SINE);
-//   Function function = new Function(freqModulator){
-//   	public float calculate(){
-//   		return x[0] * 500.0 + 700.0;
-//   	}
-//   };
-//   WavePlayer wp = new WavePlayer(ac, function, Buffer.SINE);
-//   Gain g = new Gain(ac, 1, 0.1);
-//   g.addInput(wp);
-//   ac.out.addInput(g);
-//   ac.start();
-
-// }
-
-//   ac = new  AudioContext(); 
 class LThread extends Thread{
 		boolean running;
 		int wait;
@@ -90,18 +68,17 @@ class LThread extends Thread{
 		int count;
 		Linha linha;
 
-	LThread(int w, String s, Linha linha){
-		wait = w;
+	LThread(int wait, String id, Linha linha){
+		this.wait = wait;
 		running = false;
-		id = s;
+		this.id = id;
 		count = 0;
 		this.linha = linha;
 	}
 
 	public void start(){
 		running = true;
-		println("Starting thread (will execute every " + wait + " milliseconds.");
-		println("Linha desenhando");
+		println("Iniciando thread (desenhando " + this.linha + " a cada: " + wait + " ms.");
 		super.start();		
 	}
 
@@ -109,7 +86,6 @@ class LThread extends Thread{
 		while(running){
 			println(id + ": " + count);
 			count++;
-			println(linha.getVelocity());
 			this.linha.update();
 	 		try{
 	 			sleep((long)(wait));
@@ -209,10 +185,7 @@ class Linha{
    
   public void draw(){
     stroke(0, 0, 0, this.aux);
-    //line(this.y, 0, this.y,len);
     line(this.x, 0, this.x, len);
-    println(this.y  + "" + len);
-    println("alpha: " + this.aux + " velocity: " + this.velocity);  
   }
   
   private float blink(float alpha){
@@ -223,6 +196,35 @@ class Linha{
   return this.alpha;
   }  
 }
+class Oscilator{
+
+	private float frequency;
+	private WavePlayer tone;
+	private Glide frequencyGlide, gainGlide, modulatorGlide;
+	private Gain gain;
+	private String wave;
+	private AudioContext ac;
+
+
+	Oscilator(AudioContext ac, float frequency){
+
+		this.ac = ac;
+		this.frequencyGlide = new Glide(ac, 20, 50);
+		this.gainGlide = new Glide(ac, 10.f, 50);
+		this.modulatorGlide = new Glide(ac, 0.0f, 50);
+		
+		WavePlayer tone = new WavePlayer(ac, this.frequencyGlide, Buffer.SINE);  		
+  		gain = new Gain(ac, 1, 1);
+  		gain.addInput(tone);
+  		ac.out.addInput(gain);
+	}
+
+	
+
+}	
+
+
+
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "linhas" };
     if (passedArgs != null) {
