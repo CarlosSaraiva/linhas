@@ -11,7 +11,7 @@ class Oscilator{
 	Oscilator(AudioContext ac, float frequency){
 
 		this.ac = ac;
-		this.frequencyGlide = new Glide(ac, 20, 50);
+		this.frequencyGlide = new Glide(ac, 440, 50);
 		this.gainGlide = new Glide(ac, 10., 50);
 		this.modulatorGlide = new Glide(ac, 10, 50);
 		

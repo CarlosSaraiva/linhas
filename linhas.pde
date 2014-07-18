@@ -28,7 +28,6 @@ void setup(){
 void draw(){
   background(255);
   fill(0);
-  
   for(int i = 0; i < threads.length; i++){
    threads[i].draw(); 
   }
