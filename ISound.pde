@@ -1,3 +1,3 @@
-public interface IUpdate{
-	public void update();
+public interface ISound{
+	public void sound();
 }
