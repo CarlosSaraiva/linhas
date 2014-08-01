@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/base/dxf/dxf.jar" sourcepath="C:/Users/Carlos/Downloads/dev/processing-2.2.1/modes/java/libraries/dxf/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/dxf"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/net/net.jar" sourcepath="C:/Users/Carlos/Downloads/dev/processing-2.2.1/modes/java/libraries/net/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/net"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/pdf/itext.jar" sourcepath="C:/Users/Carlos/Downloads/dev/processing-2.2.1/modes/java/libraries/pdf/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/pdf"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/pdf/pdf.jar" sourcepath="C:/Users/Carlos/Downloads/dev/processing-2.2.1/modes/java/libraries/pdf/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/pdf"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/serial/jssc.jar" sourcepath="C:/Users/Carlos/Downloads/dev/processing-2.2.1/modes/java/libraries/serial/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/serial"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/serial/serial.jar" sourcepath="C:/Users/Carlos/Downloads/dev/processing-2.2.1/modes/java/libraries/serial/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/serial"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/video/gstreamer-java.jar" sourcepath="C:/Users/Carlos/Downloads/dev/processing-2.2.1/modes/java/libraries/video/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/video"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/video/jna.jar" sourcepath="C:/Users/Carlos/Downloads/dev/processing-2.2.1/modes/java/libraries/video/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/video"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/video/video.jar" sourcepath="C:/Users/Carlos/Downloads/dev/processing-2.2.1/modes/java/libraries/video/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/video"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/core.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/gluegen-rt-natives-linux-amd64.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/gluegen-rt-natives-linux-armv6hf.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/gluegen-rt-natives-linux-i586.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/gluegen-rt-natives-macosx-universal.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/gluegen-rt-natives-windows-amd64.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/gluegen-rt-natives-windows-i586.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/gluegen-rt.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/jogl-all-natives-linux-amd64.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/jogl-all-natives-linux-armv6hf.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/jogl-all-natives-linux-i586.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/jogl-all-natives-macosx-universal.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/jogl-all-natives-windows-amd64.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/jogl-all-natives-windows-i586.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/base/core/jogl-all.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/base/core"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/user/beads/beads.jar" sourcepath="C:/Users/Carlos/Documents/Processing/libraries/beads/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/user/beads"/>
+			<attribute name="javadoc_location" value="file:/C:/Users/Carlos/Documents/Processing/libraries/beads/reference/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/user/beads/jl1.0.1.jar" sourcepath="C:/Users/Carlos/Documents/Processing/libraries/beads/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/user/beads"/>
+			<attribute name="javadoc_location" value="file:/C:/Users/Carlos/Documents/Processing/libraries/beads/reference/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/user/beads/mp3spi1.9.4.jar" sourcepath="C:/Users/Carlos/Documents/Processing/libraries/beads/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/user/beads"/>
+			<attribute name="javadoc_location" value="file:/C:/Users/Carlos/Documents/Processing/libraries/beads/reference/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/user/beads/org-jaudiolibs-audioservers-jack.jar" sourcepath="C:/Users/Carlos/Documents/Processing/libraries/beads/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/user/beads"/>
+			<attribute name="javadoc_location" value="file:/C:/Users/Carlos/Documents/Processing/libraries/beads/reference/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/user/beads/org-jaudiolibs-audioservers-javasound.jar" sourcepath="C:/Users/Carlos/Documents/Processing/libraries/beads/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/user/beads"/>
+			<attribute name="javadoc_location" value="file:/C:/Users/Carlos/Documents/Processing/libraries/beads/reference/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/user/beads/org-jaudiolibs-audioservers.jar" sourcepath="C:/Users/Carlos/Documents/Processing/libraries/beads/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/user/beads"/>
+			<attribute name="javadoc_location" value="file:/C:/Users/Carlos/Documents/Processing/libraries/beads/reference/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/user/beads/org-jaudiolibs-jnajack.jar" sourcepath="C:/Users/Carlos/Documents/Processing/libraries/beads/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/user/beads"/>
+			<attribute name="javadoc_location" value="file:/C:/Users/Carlos/Documents/Processing/libraries/beads/reference/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/user/beads/tritonus_share.jar" sourcepath="C:/Users/Carlos/Documents/Processing/libraries/beads/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/user/beads"/>
+			<attribute name="javadoc_location" value="file:/C:/Users/Carlos/Documents/Processing/libraries/beads/reference/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/user/box2d_processing/box2d_processing.jar" sourcepath="C:/Users/Carlos/Documents/Processing/libraries/box2d_processing/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/user/box2d_processing"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/user/box2d_processing/jbox2d-library-2.2.1-ds.jar" sourcepath="C:/Users/Carlos/Documents/Processing/libraries/box2d_processing/src">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="linhas/lib/user/box2d_processing"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
