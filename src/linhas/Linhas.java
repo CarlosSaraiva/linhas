@@ -18,30 +18,30 @@ public class Linhas extends PApplet {
 	AudioContext ac;
 
 	public void setup(){
-	  size(650, 300);
-	  background(255);
-	  frameRate(60); 
-	
-	  ac = new AudioContext();
-	
-	  Oscilator osc = new Oscilator(ac, 440.);
-	  ac.start();
-	
-	    
-	  for(int i = 0; i < threads.length; i++){
-	    threads[i] = new LThread(int(random(100)), "linha: " + i, new Linha(position, 0., height, 1, true));
-	    threads[i].start(); 
-	    position += 50;
-	  }
+		size(650, 300);
+		background(255);
+		frameRate(60); 
+
+		ac = new AudioContext();
+
+		Oscillator osc = new Oscillator(ac, 440.f, this);
+		ac.start();
+
+
+		for(int i = 0; i < threads.length; i++){
+			threads[i] = new LThread((int)random(100), "linha: " + i, new Linha(position, 0.f, height, 1, true, this), this);
+			threads[i].start(); 
+			position += 50;
+		}
 	}
 
 	public void draw(){
-	  background(255);
-	  fill(0);
-	  
-	  for(int i = 0; i < threads.length; i++){
-	   threads[i].draw(); 
-	  }
+		background(255);
+		fill(0);
+
+		for(int i = 0; i < threads.length; i++){
+			threads[i].draw(); 
+		}
 	}
 
 }

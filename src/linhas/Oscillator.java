@@ -1,12 +1,13 @@
 package linhas;
 
+import processing.core.PApplet;
 import beads.AudioContext;
 import beads.Buffer;
 import beads.Gain;
 import beads.Glide;
 import beads.WavePlayer;
 
-class Oscilator{
+class Oscillator{
 
 	@SuppressWarnings("unused")
 	private float frequency;
@@ -21,7 +22,7 @@ class Oscilator{
 	private AudioContext ac;
 
 
-	Oscilator(AudioContext ac, float frequency){
+	Oscillator(AudioContext ac, float frequency, PApplet parent){
 
 		this.ac = ac;
 		this.frequencyGlide = new Glide(ac, 440, 50);
