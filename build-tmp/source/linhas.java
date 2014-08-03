@@ -55,8 +55,8 @@ public void draw(){
 public interface IDraw{
 	public void draw();
 }
-public interface IUpdate{
-	public void update();
+public interface ISound{
+	public void sound();
 }
 // public interface IUpdate{
 // 	public void update();
