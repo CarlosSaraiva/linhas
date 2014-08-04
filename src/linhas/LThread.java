@@ -18,7 +18,7 @@ class LThread extends Thread{
 		this.linha = linha;
 		this.parent = parent;
 	}
-
+	
 	public void start(){
 		running = true;
 		System.out.println("Iniciando thread (desenhando " + this.linha + " a cada: " + wait + " ms.");
@@ -38,6 +38,7 @@ class LThread extends Thread{
 		System.out.println("The thread is dead!");
 
 	}
+	
 	public void draw(){
 		this.linha.draw();		
 	}
@@ -51,4 +52,24 @@ class LThread extends Thread{
 	int getCount(){
 		return count;
 	}
+
+	/**
+	 * @return the linha
+	 */
+	public Linha getLinha() {
+		return linha;
+	}
+
+	/**
+	 * @param linha the linha to set
+	 */
+	public void setLinha(Linha linha) {
+		this.linha = linha;
+	}
+
+	/**
+	 * @return the osc
+	 */
+	
+	
 }
