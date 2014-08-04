@@ -26,21 +26,22 @@ public class Linhas extends PApplet {
 	
 
 	public void setup(){
-		size(650, 300);
+		size(1290, 720);
 		background(255);
 		frameRate(60); 
 		ac = new AudioContext();
-	    masterGain = new Gain(ac, 1, (float) 0.1);
+	    masterGain = new Gain(ac, 1, (float) 0.0);
 	    ac.out.addInput(masterGain);
 
 		for(int i = 0; i < threads.length; i++){
-			threads[i] = new LThread((int)random(10), "linha: " + i, new Linha(position, 0.f, height, 1, true, this, ac, f), this);
-			masterGain.addInput(threads[i].getLinha().getOsc().getGain());
-			f *=200 ;
+			threads[i] = new LThread(random(0.f, 14.f), "linha: " + i, new Linha(position, 0.f, height, 1, true, this, ac, f), this);
+			//threads[i] = new LThread(10, "linha: " + i, new Linha(position, 0.f, height, 1, true, this, ac, f), this);			
+			f *=2;
 			threads[i].start(); 
-			position += 50;
+			position += 1290/threads.length;
+		
 		}
-		 
+		masterGain.setGain(0.f);
 		ac.start();		
 	}
 
@@ -51,7 +52,8 @@ public class Linhas extends PApplet {
 		for(int i = 0; i < 4; i++){
 			threads[(int) alpha[i]].draw();
 			
-			if(threads[i].getLinha().getAlpha() == 0){
+			if(threads[i].getLinha().getAlpha() == 0){	
+				
 				nextLine();
 				System.out.println("AQUI");
 			}			
@@ -60,12 +62,13 @@ public class Linhas extends PApplet {
 
 	private void nextLine() {
 		// TODO Auto-generated method stub
+				
+		
 		
 		for(int i = 0; i < 4; i++){
 			alpha[i] = (int) random(0, 11); 
 			System.out.println(alpha[i]);
 		    threads[(int) alpha[i]].getLinha().setAlpha(1);
-		    //threads[(int) alpha[i]].getLinha().getOsc().getEnvelope().addSegment(0.8f, 10.f);
 		}
 		
 	}

@@ -4,13 +4,13 @@ import processing.core.PApplet;
 
 class LThread extends Thread{
 	boolean running;
-	int wait;
+	float wait;
 	String id;
 	int count;
 	Linha linha;
 	PApplet parent;
 
-	LThread(int wait, String id, Linha linha, PApplet parent){
+	LThread(float wait, String id, Linha linha, PApplet parent){
 		this.wait = wait;
 		running = false;
 		this.id = id;

@@ -13,16 +13,15 @@ class Oscillator{
 
 	@SuppressWarnings("unused")
 	private float frequency;
-	@SuppressWarnings("unused")
 	private WavePlayer tone;
 	@SuppressWarnings("unused")
 	private Glide frequencyGlide, gainGlide, modulatorGlide;
 	private Gain gain;
-	@SuppressWarnings("unused")
 	private UGen wave;
 	@SuppressWarnings("unused")
 	private AudioContext ac;
 	private float f;
+	private float synthGain;
 	private Envelope envelope;
 
 
@@ -34,9 +33,10 @@ class Oscillator{
 		this.gainGlide = new Glide(ac, 10.f, 50);
 		this.modulatorGlide = new Glide(ac, 10, 50);
 		
-		envelope = new Envelope(ac, (float) 0.0);
-		tone = new WavePlayer(ac, this.f, Buffer.SINE);  		
-  		gain = new Gain(ac, 1, envelope);
+		tone = new WavePlayer(ac, this.f, Buffer.SINE); 
+		this.envelope = new Envelope(ac, (float) 0.0);		 		
+  		gain = new Gain(ac, 1, this.envelope);
+		//gain = new Gain(ac, 1, 0);
   		
   		gain.addInput(tone);
   		ac.out.addInput(gain);
@@ -50,31 +50,17 @@ class Oscillator{
 		this.gainGlide = new Glide(ac, 10.f, 50);
 		this.modulatorGlide = new Glide(ac, 10, 50);
 		
-		WavePlayer tone = new WavePlayer(ac, this.f, Buffer.SINE);  		
-  		gain = new Gain(ac, 1, 1);
+		tone = new WavePlayer(ac, f, Buffer.SINE); 
+		this.envelope = new Envelope(ac, (float) 0.0);		 		
+  		gain = new Gain(ac, 1, this.envelope);
+		//gain = new Gain(ac, 1, gainGlide);
+  		
   		gain.addInput(tone);
+  		ac.out.addInput(gain);
+  		gainGlide.setValue(0);
 	}
 
 
-	/**
-	 * @return the gainGlide
-	 */
-	public Glide getGainGlide() {
-		return gainGlide;
-	}
-
-
-	/**
-	 * @param gainGlide the gainGlide to set
-	 */
-	public void setGainGlide(float gain) {
-		this.gainGlide.setValue(gain);;
-	}
-
-
-	/**
-	 * @return the wave
-	 */
 	public UGen getWave() {
 		return wave;
 	}
@@ -91,8 +77,8 @@ class Oscillator{
 	/**
 	 * @param gain the gain to set
 	 */
-	public void setGain(Gain gain) {
-		this.gain = gain;
+	public void setGain(float gain) {
+		this.gain.setValue(gain);
 	}
 
 
@@ -125,6 +111,22 @@ class Oscillator{
 	 */
 	public void setEnvelope(Envelope envelope) {
 		this.envelope = envelope;
+	}
+
+
+	/**
+	 * @return the gainGlide
+	 */
+	public Glide getGainGlide() {
+		return gainGlide;
+	}
+
+
+	/**
+	 * @param gainGlide the gainGlide to set
+	 */
+	public void setGainGlide(Glide gainGlide) {
+		this.gainGlide = gainGlide;
 	}
 	
 	

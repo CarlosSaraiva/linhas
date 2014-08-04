@@ -1,6 +1,7 @@
 package linhas;
 
 import beads.AudioContext;
+import beads.Envelope;
 import processing.core.PApplet;
 
 class Linha{
@@ -27,7 +28,8 @@ class Linha{
 		this.alpha = 0;
 		this.parent = parent;
 		this.ac= ac;
-		this.osc = new Oscillator(ac, this.f);
+		//this.osc.getGainGlide().setValue(PApplet.map(this.alpha, 0, 255, 0.f, 0.2f));	
+		this.osc.getEnvelope().addSegment((float) 0.3, PApplet.map(this.alpha, 0, 255, 1.f, 2.f));
 	}
 
 	Linha(float x, float y, int len, float velocity, boolean blink, PApplet parent, AudioContext ac, float f){
@@ -42,6 +44,10 @@ class Linha{
 		this.ac = ac;
 		this.f = f;
 		osc = new Oscillator( ac, f);
+		//this.osc.getGainGlide().setValue(PApplet.map(this.alpha, 0, 255, 0.f, 1.f));
+		this.osc.getEnvelope().addSegment((float) 0.3, PApplet.map(this.alpha, 0, 255, 1.f, 2.f));
+
+				
 	}    
 
 	public void setBlink(boolean blink){
@@ -86,7 +92,6 @@ class Linha{
 		else{
 			this.aux = 255;
 		}
-
 	}
 	
 	/**
@@ -105,16 +110,24 @@ class Linha{
 	}
 	
 	public void draw(){
+		parent.strokeWeight(parent.random(1, 3));;
 		parent.stroke(0, 0, 0, this.aux);
 		parent.line(this.x, 0, this.x, len);
 	}
 
 	private float blink(float alpha){
 		this.alpha += this.velocity;
+		if(this.alpha == 1){
+			this.osc.getEnvelope().addSegment((float) 0.4, PApplet.map(this.alpha, 0, 255, 1.f, 2.f));
+		}
+		
+		if(this.alpha >= 255 ){
+			this.osc.getEnvelope().addSegment((float) 0.0, PApplet.map(this.alpha, 0, 255, 0, 0.5f));
+		}
+		
 		if(this.alpha > 255 || this.alpha < 0){    
-			this.velocity = -this.velocity;    
-			//this.osc.setGainGlide(this.velocity);
-			//this.osc.setFrequency(this.velocity);
+			this.velocity = -this.velocity;
+			
 		}
 		return this.alpha;
 	}
