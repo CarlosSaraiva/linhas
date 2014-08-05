@@ -22,7 +22,7 @@ public class Linhas extends PApplet {
 	ArrayList aleatorios = new ArrayList(12);
 	float  alpha[] = new float[12];
 	Gain masterGain;
-	float f = 220.f;
+	float f = 440.f;
 	
 
 	public void setup(){
@@ -34,9 +34,9 @@ public class Linhas extends PApplet {
 	    ac.out.addInput(masterGain);
 
 		for(int i = 0; i < threads.length; i++){
-			threads[i] = new LThread(random(0.f, 14.f), "linha: " + i, new Linha(position, 0.f, height, 1, true, this, ac, f), this);
+			threads[i] = new LThread(wait += 10, "linha: " + i, new Linha(position, 0.f, height, 1, true, this, ac, f), this);
 			//threads[i] = new LThread(10, "linha: " + i, new Linha(position, 0.f, height, 1, true, this, ac, f), this);			
-			f *=2;
+			f *= 2.52;
 			threads[i].start(); 
 			position += 1290/threads.length;
 		
@@ -49,7 +49,7 @@ public class Linhas extends PApplet {
 		background(255);
 		fill(0);
 		
-		for(int i = 0; i < 4; i++){
+		for(int i = 0; i < 5; i++){
 			threads[(int) alpha[i]].draw();
 			
 			if(threads[i].getLinha().getAlpha() == 0){	
@@ -62,10 +62,12 @@ public class Linhas extends PApplet {
 
 	private void nextLine() {
 		// TODO Auto-generated method stub
-				
+		for(int i = 0; i < threads.length; i++){
+			threads[i].getLinha().getOsc().getEnvelope().addSegment((float) 0.0, 1.f);
+		}
 		
 		
-		for(int i = 0; i < 4; i++){
+		for(int i = 0; i < 5; i++){
 			alpha[i] = (int) random(0, 11); 
 			System.out.println(alpha[i]);
 		    threads[(int) alpha[i]].getLinha().setAlpha(1);

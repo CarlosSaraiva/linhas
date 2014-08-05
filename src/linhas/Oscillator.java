@@ -34,6 +34,7 @@ class Oscillator{
 		this.modulatorGlide = new Glide(ac, 10, 50);
 		
 		tone = new WavePlayer(ac, this.f, Buffer.SINE); 
+		//tone = new WavePlayer(ac, this.f, Buffer.SAW); 
 		this.envelope = new Envelope(ac, (float) 0.0);		 		
   		gain = new Gain(ac, 1, this.envelope);
 		//gain = new Gain(ac, 1, 0);
